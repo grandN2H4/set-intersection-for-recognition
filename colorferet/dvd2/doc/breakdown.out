@@ -1,0 +1,32 @@
+F / Asian                     :   577 images,  138 frontals,   69 fa's,   57 different subjects
+F / Asian-Middle-Eastern      :    72 images,   17 frontals,    9 fa's,    6 different subjects
+F / Black-or-African-American :   473 images,  116 frontals,   58 fa's,   44 different subjects
+F / Hispanic                  :   293 images,   74 frontals,   37 fa's,   30 different subjects
+F / White                     :  2499 images,  636 frontals,  318 fa's,  256 different subjects
+F / Native-American           :    23 images,    6 frontals,    3 fa's,    2 different subjects
+F / Pacific-Islander          :    61 images,   16 frontals,    8 fa's,    6 different subjects
+F / Other                     :    17 images,    4 frontals,    2 fa's,    2 different subjects
+
+M / Asian                     :  1447 images,  347 frontals,  174 fa's,  114 different subjects
+M / Asian-Middle-Eastern      :   539 images,  134 frontals,   67 fa's,   47 different subjects
+M / Asian-Southern            :    11 images,    2 frontals,    1 fa's,    1 different subjects
+M / Black-or-African-American :   415 images,   99 frontals,   50 fa's,   34 different subjects
+M / Hispanic                  :   277 images,   64 frontals,   32 fa's,   27 different subjects
+M / White                     :  4580 images, 1055 frontals,  529 fa's,  362 different subjects
+M / Pacific-Islander          :    38 images,   10 frontals,    5 fa's,    4 different subjects
+M / Other                     :    16 images,    4 frontals,    2 fa's,    2 different subjects
+
+Asian                         :  2024 images,  485 frontals,  243 fa's,  171 different subjects
+Asian-Middle-Eastern          :   611 images,  151 frontals,   76 fa's,   53 different subjects
+Asian-Southern                :    11 images,    2 frontals,    1 fa's,    1 different subjects
+Black-or-African-American     :   888 images,  215 frontals,  108 fa's,   78 different subjects
+Hispanic                      :   570 images,  138 frontals,   69 fa's,   57 different subjects
+White                         :  7079 images, 1691 frontals,  847 fa's,  618 different subjects
+Native-American               :    23 images,    6 frontals,    3 fa's,    2 different subjects
+Pacific-Islander              :    99 images,   26 frontals,   13 fa's,   10 different subjects
+Other                         :    33 images,    8 frontals,    4 fa's,    4 different subjects
+
+F                             :  4015 images, 1007 frontals,  504 fa's,  403 different subjects
+M                             :  7323 images, 1715 frontals,  860 fa's,  591 different subjects
+
+Color FERET                   : 11338 images, 2722 frontals, 1364 fa's,  994 different subjects
