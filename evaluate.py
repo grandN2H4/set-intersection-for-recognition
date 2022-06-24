@@ -166,21 +166,25 @@ def regi_veri(faceid, faceset, t):
         registerset.append(a)
     m = len(registerid)
     n = len(verifyid)
-    for i in range(0, m):
-        for j in range(0, n):
-            num = len(set.intersection(registerset[i],verifyset[j]))
-            # print("num: ", num)
-            if(registerid[i] == verifyid[j]):    #计算自己和自己比的总次数
-                same += 1
-            else:           #计算自己和别人比的总次数
-                notsame += 1
-            # 认假
-            if(registerid[i] != verifyid[j] and num > t):
-                far += 1
-            # 拒真
-            if(registerid[i] == verifyid[j] and num < t):
-                frr += 1
-    return far, frr, notsame, same
+
+    return registerset, verifyset
+
+    # for i in range(0, m):
+    #     for j in range(0, n):
+    #         num = len(set.intersection(registerset[i],verifyset[j]))
+    #         # print("num: ", num)
+    #         if(registerid[i] == verifyid[j]):    #计算自己和自己比的总次数
+    #             same += 1
+    #         else:           #计算自己和别人比的总次数
+    #             notsame += 1
+    #         # 认假
+    #         if(registerid[i] != verifyid[j] and num > t):
+    #             far += 1
+    #         # 拒真
+    #         if(registerid[i] == verifyid[j] and num < t):
+    #             frr += 1
+    # return far, frr, notsame, same
+    
 # d = 20 # d是量化槽的数量
 # m = d # 量化的位数 m与d相关
 # t = 850 # 比较的阈值
