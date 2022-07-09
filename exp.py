@@ -116,13 +116,15 @@ def exp_t():
     
     FAR = []
     FRR = []
-    for t in range(700,950,50):
-        print('k: ', k)
+    for t in range(700,805,5):
+        print("t: ",t)
         Frr, Far = evaluation(50, t, 3)
         FRR.append(Frr)
         FAR.append(Far)
     plt.plot(FAR,'b')
     plt.plot(FRR,'r')
-    pathr = 'pics/exp_t'+str(t)+'k'+str(k)+'.png'
+    pathr = 'pics/exp_t.png'
     plt.savefig(pathr)
     plt.close()
+
+exp_t()
