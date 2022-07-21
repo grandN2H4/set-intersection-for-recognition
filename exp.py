@@ -82,21 +82,49 @@ def exp_bias():
 
     FAR = []
     FRR = []
-    for bias in range(-1,10):
+    for bias in range(4,50,5):
         print('bias: ', bias)
         Frr, Far = evaluation(bias, 800, 3)
         FRR.append(Frr)
         FAR.append(Far)
-    plt.plot(FAR,'b')
-    plt.plot(FRR,'r')
-    plt.savefig('pics/bias_exp.png')
+    # plt.plot(FAR,'b')
+    # plt.plot(FRR,'r')
+
+    plt.plot(FAR,linewidth =2.0, label = r"FAR",color='tab:blue', linestyle='solid',marker='D') #画图，自变量x放前面
+    plt.plot(FRR,linewidth =2.0, label = r"FRR",color='tab:red', linestyle='solid',marker='D') #画图，自变量x放前面
+
+    #以下为图形设置参数
+    plt.legend(frameon=False,loc="upper left",fontsize='large') #设置图例无边框，将图例放在左上角
+    # plt.rcParams['figure.figsize']=(6.0,4.0) #图形大小
+    # plt.rcParams['savefig.dpi'] = 200 #图片像素
+    # plt.rcParams['figure.dpi'] = 200 #分辨率
+    # 默认的像素：[6.0,4.0]，分辨率为100，图片尺寸为 600&400
+    # 指定dpi=200，图片尺寸为 1200*800
+    # 指定dpi=300，图片尺寸为 1800*1200
+    # 设置figsize可以在不改变分辨率情况下改变比例
+
+    font1 = {'family' : 'Arial',
+    'weight' : 'normal',
+    'size'   : 15,
+    }
+    plt.xlabel('Ten-Sets',font1) #x轴坐标名称及字体样式
+    plt.ylabel('FAR/FRR(%)',font1) #y轴坐标名称及字体样式
+
+    plt.xticks(fontsize=13) #x轴刻度字体大小
+    plt.yticks(fontsize=13) #y轴刻度字体大小
+    plt.xlim(0,10)#X轴范围
+    plt.ylim(0,100)#显示y轴范围
+
+    plt.savefig('pics/Multi-Validation_1.png')
     plt.close()
 
 # exp_bias()
 
 def exp_t_and_k():
     
-    for k in range(2,8):
+    file= open("data.txt","a")
+
+    for k in range(2,4):
         FAR = []
         FRR = []
         for t in range(700,950,50):
@@ -104,27 +132,34 @@ def exp_t_and_k():
             Frr, Far = evaluation(50, t, k)
             FRR.append(Frr)
             FAR.append(Far)
-        plt.plot(FAR,'b')
-        plt.plot(FRR,'r')
-        pathr = 'pics/exp_t'+str(t)+'k'+str(k)+'.png'
-        plt.savefig(pathr)
-        plt.close()
+        plt.plot(FRR,FAR)
+        file.writelines(str(k))
+        file.write("FRR: ")
+        file.writelines(FRR)
+        file.write("FAR: ")
+        file.writelines(FAR)    
+        # plt.plot(FAR,'b')
+        # plt.plot(FRR,'r')
+    pathr = 'pics/DET_tk.png'
+    plt.savefig(pathr)
+    plt.close()
+    file.close()
 
-# exp_t_and_k()
+exp_t_and_k()
 
 def exp_t():
     
     FAR = []
     FRR = []
-    for t in range(700,805,5):
+    for t in range(200,1000,100):
         print("t: ",t)
-        Frr, Far = evaluation(50, t, 3)
+        Frr, Far = evaluation(24, t, 3)
         FRR.append(Frr)
         FAR.append(Far)
-    plt.plot(FAR,'b')
-    plt.plot(FRR,'r')
-    pathr = 'pics/exp_t.png'
+    plt.plot(FRR,FAR)
+    # plt.plot(FRR,'r')
+    pathr = 'pics/DET.png'
     plt.savefig(pathr)
     plt.close()
 
-exp_t()
+# exp_t()
