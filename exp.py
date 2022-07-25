@@ -119,9 +119,9 @@ def exp_bias():
     plt.xticks(fontsize=13) #x轴刻度字体大小
     plt.yticks(fontsize=13) #y轴刻度字体大小
     plt.xlim(0,9)#X轴范围
-    plt.ylim(0,100)#显示y轴范围
+    plt.ylim(0,30)#显示y轴范围
 
-    plt.savefig('pics/Multi-Validation_1.png')
+    plt.savefig('pics/Multi-Validation_2.png')
     plt.close()
 
 exp_bias()
