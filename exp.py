@@ -61,7 +61,7 @@ def evaluation(bias,t,k):
                             # print(dist[i])
                             cnt += 1
                 # 人脸
-                registerset, verifyset = regi_veri(faceid, faceset, t)
+                registerset, verifyset = regi_veri(faceid, faceset)
                 num = len(set.intersection(registerset[I+bias],verifyset[I1+bias]))
                 
                 if(cnt > k and num > t):                    #有cnt+1个相同点
@@ -94,7 +94,7 @@ def exp_bias():
     plt.plot(FRR,linewidth =2.0, label = r"FRR",color='tab:red', linestyle='solid',marker='D') #画图，自变量x放前面
 
     #以下为图形设置参数
-    plt.legend(frameon=False,loc="upper left",fontsize='large') #设置图例无边框，将图例放在左上角
+    # plt.legend(frameon=False,loc="upper left",fontsize='large') #设置图例无边框，将图例放在左上角
     # plt.rcParams['figure.figsize']=(6.0,4.0) #图形大小
     # plt.rcParams['savefig.dpi'] = 200 #图片像素
     # plt.rcParams['figure.dpi'] = 200 #分辨率
@@ -107,18 +107,24 @@ def exp_bias():
     'weight' : 'normal',
     'size'   : 15,
     }
+
+    plt.legend(loc='upper right')  
+    plt.grid(color="k", linestyle=":") #网格
+
+    plt.title("Multi-Validation", fontsize=15)
+
     plt.xlabel('Ten-Sets',font1) #x轴坐标名称及字体样式
     plt.ylabel('FAR/FRR(%)',font1) #y轴坐标名称及字体样式
 
     plt.xticks(fontsize=13) #x轴刻度字体大小
     plt.yticks(fontsize=13) #y轴刻度字体大小
-    plt.xlim(0,10)#X轴范围
+    plt.xlim(0,9)#X轴范围
     plt.ylim(0,100)#显示y轴范围
 
     plt.savefig('pics/Multi-Validation_1.png')
     plt.close()
 
-# exp_bias()
+exp_bias()
 
 def exp_t_and_k():
     
@@ -145,7 +151,7 @@ def exp_t_and_k():
     plt.close()
     file.close()
 
-exp_t_and_k()
+# exp_t_and_k()
 
 def exp_t():
     

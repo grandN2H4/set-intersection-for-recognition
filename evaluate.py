@@ -140,15 +140,10 @@ def evaluate(faceid, faceset, t):
                 frr += 1
     return far, frr, notsame, same
 
-def regi_veri(faceid, faceset, t):
+def regi_veri(faceid, faceset):
 
     n_all = len(faceid)
-    far = 0
-    frr = 0
-    same = 0
-    notsame = 0
     i = 0
-    j = 0
     registerid = list()
     registerset = list()
     verifyid = list()
@@ -164,8 +159,6 @@ def regi_veri(faceid, faceset, t):
             a = a | faceset[i]
             i += 1
         registerset.append(a)
-    m = len(registerid)
-    n = len(verifyid)
 
     return registerset, verifyset
 
