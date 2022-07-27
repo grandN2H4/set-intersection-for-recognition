@@ -1,14 +1,10 @@
-from asyncio.format_helpers import _format_callback_source
-import torch
-import os
 import numpy as np
-import sys
 import random
 import matplotlib.pyplot as plt
 import math
 
 dim = 128 # embedding的长度
-
+#数字变成1~d
 def sort_And_divide(d):
     # d是量化槽的数量
        
@@ -44,9 +40,9 @@ def sort_And_divide(d):
         for jdx, val in enumerate(embedding):
             for i in range(d):
                 if i == d - 1:
-                    quanData[idx][jdx] = i                
+                    quanData[idx][jdx] = i+1                
                 elif val >= T[jdx][i] and val <= T[jdx][i+1]:
-                    quanData[idx][jdx] = i
+                    quanData[idx][jdx] = i+1
                     break
                     # print(T[jdx][i],quanData[idx][jdx])
     # print(quanData.shape)
@@ -64,7 +60,10 @@ def vector2set(d,m):
         feature = ''
         a = set()
         for y in x:
-            feature += str(int(y)).zfill(m)
+            # feature += bin(int(pow(2,y)-1))[2:].zfill(m) #LSSC
+            # feature += bin(int(y))[2:].zfill(m)            #DBR
+            feature += bin(y^(y>>1))[2:].zfill(m)          #BRGC
+            # feature += bin(int(pow(2,y-1)))[2:].zfill(m)   #One-hot           
         for i,j in enumerate(feature):
             if j == '1':
                 a.add(i)     
@@ -72,6 +71,28 @@ def vector2set(d,m):
         list_set.append(a)
     list_id = allData[:,0:1]
     return list_id, list_set
+
+def regi_veri(faceid, faceset):
+
+    n_all = len(faceid)
+    i = 0
+    registerid = list()
+    registerset = list()
+    verifyid = list()
+    verifyset = list()
+    while(i < n_all):
+        if(i == 0 or faceid[i-1] != faceid[i]):
+            verifyset.append(faceset[i])
+            verifyid.append(faceid[i])
+            registerid.append(faceid[i])
+            i += 1
+        a = set()
+        while(i < n_all and faceid[i-1] == faceid[i]):
+            a = a | faceset[i]
+            i += 1
+        registerset.append(a)
+
+    return registerset, verifyset
 
 def evaluate(d, m, t, times):
     

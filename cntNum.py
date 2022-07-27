@@ -1,30 +1,7 @@
-from asyncio.format_helpers import _format_callback_source
-import torch
-import os
 import numpy as np
-import sys
-import random
-import matplotlib.pyplot as plt
-import math
-from evaluate import *
-
-import pandas as pd
-import seaborn as sns
-import copy
-import seaborn as sns
-from itertools import combinations
-from parameter import n
-
-
+from funcs import *
 
 dim = 128 # embedding的长度
-d = 16
-m = d
-# t = 882
-# t = 800 #人脸阈值
-# k = 3 #指纹阈值
-faceid, faceset = vector2set(d, m)
-
 
 def getCntNum(bias):
     same = 0
@@ -63,5 +40,19 @@ def getCntNum(bias):
                 file= open("data.txt","a")
                 file.write(str(cnt)+" "+str(num)+" "+str(I)+" "+str(I1)+'\n')
                 file.close()
-getCntNum(50)
+# getCntNum(50)
+
+D = [2,4,8,16]
+bias = 50
+for d in D:
+    # m = d # LSSC/One-hot
+    m = int(math.log2(d)) #DBR/BRGC
+    faceid, faceset = vector2set(d, m)
+    registerset, verifyset = regi_veri(faceid, faceset)
+    file = open("dataPics/BRGC_d_"+str(d)+".txt","w")
+    for I in range(1,101):  
+        for I1 in range(1,101): 
+            num = len(set.intersection(registerset[I+bias],verifyset[I1+bias]))            
+            file.write(str(num)+" "+str(I)+" "+str(I1)+'\n')
+    file.close()
 

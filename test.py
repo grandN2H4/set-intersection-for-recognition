@@ -100,8 +100,24 @@
 # # plt.legend(loc="lower right")
 # # plt.show()
 
-file= open("data.txt","a")
-for i in range(0,5):
-    for j in range(6,9):
-        file.write(str(i)+" "+str(j)+'\n')
-file.close()
+# file= open("data.txt","a")
+# for i in range(0,5):
+#     for j in range(6,9):
+#         file.write(str(i)+" "+str(j)+'\n')
+# file.close()
+
+# y = 4
+# m = 16
+# a = bin(int(pow(2,y-1)))[2:].zfill(m)
+# print(a)
+
+# def binary2gray(n):
+#     # n = int(n, 2)
+#     n = int(n)
+#     return bin(n^(n>>1))[2:].zfill(16)
+    
+# binary = input('输入二进制码：')
+# print('格雷码:', binary2gray(binary))
+
+import math
+print(math.log2(2))
