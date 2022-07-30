@@ -62,8 +62,8 @@ def vector2set(d,m):
         for y in x:
             # feature += bin(int(pow(2,y)-1))[2:].zfill(m) #LSSC
             # feature += bin(int(y))[2:].zfill(m)            #DBR
-            feature += bin(y^(y>>1))[2:].zfill(m)          #BRGC
-            # feature += bin(int(pow(2,y-1)))[2:].zfill(m)   #One-hot           
+            # feature += bin(y^(y>>1))[2:].zfill(m)          #BRGC
+            feature += bin(int(pow(2,y-1)))[2:].zfill(m)   #One-hot           
         for i,j in enumerate(feature):
             if j == '1':
                 a.add(i)     

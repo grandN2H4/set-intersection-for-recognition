@@ -6,7 +6,7 @@ import sys
 import random
 import matplotlib.pyplot as plt
 import math
-from evaluate import *
+from funcs import *
 
 import pandas as pd
 import seaborn as sns
@@ -84,7 +84,7 @@ def exp_bias():
     FRR = []
     for bias in range(4,50,5):
         print('bias: ', bias)
-        Frr, Far = evaluation(bias, 800, 3)
+        Frr, Far = evaluation(bias, 50, 3)
         FRR.append(Frr)
         FAR.append(Far)
     # plt.plot(FAR,'b')
@@ -119,7 +119,7 @@ def exp_bias():
     plt.xticks(fontsize=13) #x轴刻度字体大小
     plt.yticks(fontsize=13) #y轴刻度字体大小
     plt.xlim(0,9)#X轴范围
-    plt.ylim(0,30)#显示y轴范围
+    plt.ylim(0,20)#显示y轴范围
 
     plt.savefig('pics/Multi-Validation_2.png')
     plt.close()

@@ -6,7 +6,7 @@ import sys
 import random
 import matplotlib.pyplot as plt
 import math
-from evaluate import *
+from funcs import *
 
 import pandas as pd
 import seaborn as sns
