@@ -119,5 +119,31 @@
 # binary = input('输入二进制码：')
 # print('格雷码:', binary2gray(binary))
 
-import math
-print(math.log2(2))
+# import math
+# print(math.log2(2))
+
+import matplotlib.pyplot as plt
+FRR = [4,4,4,4,4,4,4,4,4,4]
+FAR = [0.0101010101010101,0.0,0.0,0.0,0.0,0.0202020202020202,0.0101010101010101,0.0,0.030303030303030304,0.0]
+plt.plot(FAR,linewidth =2.0, label = r"FAR",color='tab:blue', linestyle='solid',marker='D') #画图，自变量x放前面
+plt.plot(FRR,linewidth =2.0, label = r"FRR",color='tab:red', linestyle='solid',marker='D') #画图，自变量x放前面
+font1 = {'family' : 'Arial',
+    'weight' : 'normal',
+    'size'   : 15,
+    }
+
+plt.legend(loc='upper right')  
+plt.grid(color="k", linestyle=":") #网格
+
+plt.title("Multi-Validation", fontsize=15)
+
+plt.xlabel('Ten-Sets',font1) #x轴坐标名称及字体样式
+plt.ylabel('FAR/FRR(%)',font1) #y轴坐标名称及字体样式
+
+plt.xticks(fontsize=13) #x轴刻度字体大小
+plt.yticks(fontsize=13) #y轴刻度字体大小
+plt.xlim(0,9)#X轴范围
+plt.ylim(0,20)#显示y轴范围
+
+plt.savefig('pics/Multi-Validation.png')
+plt.close()

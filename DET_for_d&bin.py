@@ -32,7 +32,7 @@ def det_d(Approach):
     D = [2,4,8,16]
     line_s = ["-", "--", "-.", ":"]
     for i,d in enumerate(D):
-        faceData = np.loadtxt("dataPics/"+Approach+str(d)+".txt")
+        faceData = np.loadtxt("dataPics/"+Approach+"_d_"+str(d)+".txt")
         num = faceData[:,0:1]
         FAR = []
         FRR = []
@@ -50,14 +50,14 @@ def det_d(Approach):
     plt.grid(color="k", linestyle=":") #网格
     plt.xlabel('False  Rejection  Rate', font1)
     plt.ylabel('False  Acceptance  Rate', font1)
-    plt.title("DET Curve", fontsize=15)
+    plt.title(Approach+" DET Curve", fontsize=15)
 
     pathr = 'graph/'+Approach+'.png'
     plt.savefig(pathr)
 
     plt.close()
 
-# det_d("OneHot"+"_d_")
+det_d("OneHot")
 
 def det_bin():
     Approach = ["DBR","BRGC","LSSC","OneHot"]
@@ -138,4 +138,4 @@ def bothAcc():
         Frr, Far = FarFrr(num,k,t)
         FRR.append(Frr)
         FAR.append(Far)
-bothAcc()
+# bothAcc()

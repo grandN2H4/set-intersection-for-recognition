@@ -123,35 +123,35 @@ def evaluate(d, m, t, times):
     total = n * (n - 1) / 2
     return far, frr, notsame, same
 
+def fun():
+    d = 4 # d是量化槽的数量
+    m = 10 # 量化的位数 m与d相关
+    t = 8 # 比较的阈值
+    times = 4000
+    step = 1
+    allnum = 40000
+    Init_Epoch      = 0
+    Interval_Epoch  = 12
+    Epoch = 20
+    FAR = []
+    FRR = [] 
+    for epoch in range(Init_Epoch, Interval_Epoch):
+        print("epoch: " + str(epoch))
+        far, frr, notsame, same = evaluate(d, m, t, times)
+        if(same == 0 or notsame == 0):
+            print(same, notsame);
+        else:
+            FRR.append(frr/same)
+            FAR.append(far/notsame) 
+            print("FRR: ",frr/same,"FAR: ",far/notsame)  
+        # if d < allnum:
+        #     d += step
+        t += 1
+        m = int(math.log(d,2))
 
-d = 4 # d是量化槽的数量
-m = 10 # 量化的位数 m与d相关
-t = 8 # 比较的阈值
-times = 4000
-step = 1
-allnum = 40000
-Init_Epoch      = 0
-Interval_Epoch  = 12
-Epoch = 20
-FAR = []
-FRR = [] 
-for epoch in range(Init_Epoch, Interval_Epoch):
-    print("epoch: " + str(epoch))
-    far, frr, notsame, same = evaluate(d, m, t, times)
-    if(same == 0 or notsame == 0):
-        print(same, notsame);
-    else:
-        FRR.append(frr/same)
-        FAR.append(far/notsame) 
-        print("FRR: ",frr/same,"FAR: ",far/notsame)  
-    # if d < allnum:
-    #     d += step
-    t += 1
-    m = int(math.log(d,2))
-
-plt.plot(FAR,'b')
-plt.plot(FRR,'r')
-plt.savefig('t2-22_d4_FAR&FRR_plot.png')
+    plt.plot(FAR,'b')
+    plt.plot(FRR,'r')
+    plt.savefig('t2-22_d4_FAR&FRR_plot.png')
 
 
 # print("far: " + str(far/notsame))
